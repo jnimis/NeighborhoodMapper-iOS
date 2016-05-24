@@ -42,4 +42,24 @@
   // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+  UIApplicationState state = [application applicationState];
+  if (state == UIApplicationStateInactive) {
+    // Application was in the background when notification was delivered.
+  } else {
+    // App was running in the foreground. Perhaps
+    // show a UIAlertView to ask them what they want to do?
+  }
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
+  if ([identifier isEqualToString:@"pingGo"]) {
+    NSLog(@"user info in handleActionWithIdenfifier is %@", notification.userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pingSurvey" object:nil userInfo:notification.userInfo];
+  }
+  if (completionHandler) {
+    completionHandler();
+  }
+}
+
 @end

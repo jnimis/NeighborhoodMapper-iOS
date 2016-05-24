@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="ButtonCell">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="s24-jw-6Vy">
+                        <rect key="frame" x="30.5" y="34.5" width="46" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="s24-jw-6Vy" secondAttribute="height" multiplier="1:1" id="kxi-Jz-hgx"/>
+                        </constraints>
+                        <state key="normal" title="Button">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="buttonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ivl-K4-QeT"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.84841056029999995" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="s24-jw-6Vy" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="9Wd-UF-4x7"/>
+                <constraint firstItem="s24-jw-6Vy" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="FVd-Fw-kH2"/>
+                <constraint firstItem="s24-jw-6Vy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="bot-fj-125"/>
+                <constraint firstItem="s24-jw-6Vy" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="yMC-5r-X97"/>
+            </constraints>
+            <size key="customSize" width="107" height="99"/>
+            <connections>
+                <outlet property="button" destination="s24-jw-6Vy" id="F3f-Pf-VT4"/>
+            </connections>
+            <point key="canvasLocation" x="333.5" y="294.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
