@@ -10,7 +10,6 @@
 #import <UIKit/UIKit.h>
 @import CoreLocation;
 #import "Constants.h"
-#import "LinkedList.h"
 
 @implementation LocationManager
 

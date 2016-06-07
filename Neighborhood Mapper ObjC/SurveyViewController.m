@@ -19,8 +19,6 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  // load survey questions into array/dictionary, display first question
-  
 }
 
 
@@ -36,11 +34,10 @@
   {
     tView = [[UILabel alloc] init];
     [tView setFont:[UIFont fontWithName:@"Helvetica" size:14]];
-    //[tView setTextAlignment:UITextAlignmentLeft];
     tView.numberOfLines=3;
   }
   NSString* title;
-  //  enum SurveyPicker pickerIndex = pickerView.tag;
+
   switch (pickerView.tag) {
     case SurveyPickerGender:
       title = [self.genderResponses objectAtIndex:row];
@@ -104,7 +101,7 @@
 - (NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
   
   NSString* title;
-//  enum SurveyPicker pickerIndex = pickerView.tag;
+
   switch (pickerView.tag) {
     case SurveyPickerGender:
       title = [self.genderResponses objectAtIndex:row];

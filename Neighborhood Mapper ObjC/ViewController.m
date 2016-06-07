@@ -202,53 +202,13 @@
   }];
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-  return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-  return [self.keysButtonsToMake count];
-}
-
-- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  ButtonCell* cell = (ButtonCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-  NSString* title = [self.keysButtonsToMake objectAtIndex:indexPath.row];
-  [cell.button setTitle:title forState:UIControlStateNormal];
-  cell.key = title;
-  cell.delegate = self;
-
-  return cell;
-}
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView
-//                  layout:(UICollectionViewLayout *)collectionViewLayout
-//  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//  CGRect screenRect = [[UIScreen mainScreen] bounds];
-//  CGFloat screenWidth = screenRect.size.width;
-//  CGFloat screenHeight = screenRect.size.height;
-//  float cellWidth = screenWidth / 3.0; //Replace the divisor with the column count requirement. Make sure to have it in float.
-//  if (screenHeight > screenWidth) {
-//    cellWidth = screenWidth; //Replace the divisor with the column count requirement. Make sure to have it in float.
-//  }
-//  
-//  CGSize size = CGSizeMake(cellWidth, cellWidth);
-//  
-//  return size;
-//}
 
 - (void)mainScreenButtonTapped:(NSString*)key {
   
-//  ButtonCell* tappedButton = (ButtonCell*) sender;
-//  NSString* key = tappedButton.key;
-  
-  // get location
   BOOL success = [[LocationManager sharedInstance] storeLocationForKey:key];
   
-//  BOOL success = false;
-  
   if (!success) {
-    // alert view to show failure?
+
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Location not available"
                                                                    message:@"Please try again later"
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -257,7 +217,7 @@
                                                            style:UIAlertActionStyleDefault
                                                          handler:^(UIAlertAction *stayAction)
                                    {
-                                     // present other options
+                                     // present other options?
                                      
                                    }];
     [alert addAction:cancelAction];
@@ -265,7 +225,7 @@
     [self presentViewController:alert animated:YES completion:nil];
 
   } else {
-    NSLog(@"succeeded at storing location");
+//    NSLog(@"succeeded at storing location");
     // remove button from view
     NSString* toRemove;
     for (NSString* testKey in self.keysButtonsToMake) {
@@ -313,6 +273,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
   // get key, call mainScreenButtonTapped
   UITableViewCell* tappedCell = [tableView cellForRowAtIndexPath:indexPath];
   NSString* key = tappedCell.textLabel.text;

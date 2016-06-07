@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A3CC6AC1CF3A2E000877215 /* LinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC6A81CF3A2E000877215 /* LinkedList.m */; };
-		2A3CC6AD1CF3A2E000877215 /* LinkedListNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC6AA1CF3A2E000877215 /* LinkedListNode.m */; };
 		2A3CC6B11CF4AF0E00877215 /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC6AF1CF4AF0E00877215 /* ButtonCell.m */; };
 		2A3CC6B21CF4AF0E00877215 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3CC6B01CF4AF0E00877215 /* ButtonCell.xib */; };
 		2A9812971CF65279005CB91C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9812961CF65279005CB91C /* arrow.png */; };
@@ -49,11 +47,6 @@
 
 /* Begin PBXFileReference section */
 		2A3CC6A01CF3A0C500877215 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		2A3CC6A71CF3A2E000877215 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
-		2A3CC6A81CF3A2E000877215 /* LinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedList.m; sourceTree = "<group>"; };
-		2A3CC6A91CF3A2E000877215 /* LinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedListNode.h; sourceTree = "<group>"; };
-		2A3CC6AA1CF3A2E000877215 /* LinkedListNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedListNode.m; sourceTree = "<group>"; };
-		2A3CC6AB1CF3A2E000877215 /* SettableNodePointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettableNodePointer.h; sourceTree = "<group>"; };
 		2A3CC6AE1CF4AF0E00877215 /* ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
 		2A3CC6AF1CF4AF0E00877215 /* ButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonCell.m; sourceTree = "<group>"; };
 		2A3CC6B01CF4AF0E00877215 /* ButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
@@ -164,11 +157,6 @@
 				2AB5ADAB1CEFF97400E9BB0F /* Assets.xcassets */,
 				2AB5ADAD1CEFF97400E9BB0F /* LaunchScreen.storyboard */,
 				2AB5ADB01CEFF97400E9BB0F /* Info.plist */,
-				2A3CC6A71CF3A2E000877215 /* LinkedList.h */,
-				2A3CC6A81CF3A2E000877215 /* LinkedList.m */,
-				2A3CC6A91CF3A2E000877215 /* LinkedListNode.h */,
-				2A3CC6AA1CF3A2E000877215 /* LinkedListNode.m */,
-				2A3CC6AB1CF3A2E000877215 /* SettableNodePointer.h */,
 				2AB5AD9F1CEFF97400E9BB0F /* Supporting Files */,
 			);
 			path = "Neighborhood Mapper ObjC";
@@ -344,10 +332,8 @@
 				2ABFE4841CFA291000B42CD6 /* DebugConsoleViewController.m in Sources */,
 				2AEA404A1CF278030059F7DB /* PingSurveyViewController.m in Sources */,
 				2A3CC6B11CF4AF0E00877215 /* ButtonCell.m in Sources */,
-				2A3CC6AC1CF3A2E000877215 /* LinkedList.m in Sources */,
 				2AB5ADD41CEFF9AA00E9BB0F /* LocationManager.m in Sources */,
 				2AB5ADA71CEFF97400E9BB0F /* ViewController.m in Sources */,
-				2A3CC6AD1CF3A2E000877215 /* LinkedListNode.m in Sources */,
 				2AB5ADA41CEFF97400E9BB0F /* AppDelegate.m in Sources */,
 				2AB5ADA11CEFF97400E9BB0F /* main.m in Sources */,
 				2AB5ADDA1CF014BD00E9BB0F /* SurveyViewController.m in Sources */,
