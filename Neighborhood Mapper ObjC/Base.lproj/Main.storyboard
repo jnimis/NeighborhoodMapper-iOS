@@ -3,8 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,25 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u5N-hI-NvX">
-                                <rect key="frame" x="30" y="490" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="4Q8-gL-XmJ"/>
-                                    <constraint firstAttribute="width" secondItem="u5N-hI-NvX" secondAttribute="height" multiplier="1:1" id="Vwr-4y-QlF"/>
-                                </constraints>
-                                <state key="normal" title="Ping"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="4Q8-gL-XmJ"/>
-                                        <exclude reference="Vwr-4y-QlF"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="pingButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E4O-Kd-yYZ"/>
-                                </connections>
-                            </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-W6-rhs">
-                                <rect key="frame" x="132" y="45" width="370" height="348"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-W6-rhs">
+                                <rect key="frame" x="0.0" y="70" width="600" height="525"/>
                                 <color key="backgroundColor" red="0.95609933364429722" green="0.98762786166545935" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sLF-Tb-Ytd">
                                     <size key="itemSize" width="50" height="50"/>
@@ -61,41 +44,68 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fFP-CE-Da8"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap when you are at these places:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FH0-4j-p5h">
-                                <rect key="frame" x="-53" y="16" width="260" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZS-9A-qK4">
+                                <rect key="frame" x="277" y="565" width="46" height="30"/>
+                                <state key="normal" title="Debug"/>
+                                <connections>
+                                    <action selector="pingButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A3m-V4-ohO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap when you are at these places:" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FH0-4j-p5h">
+                                <rect key="frame" x="20" y="25" width="570" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eK0-iy-K6S">
+                                <rect key="frame" x="0.0" y="79" width="600" height="471"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="jjS-HQ-G6F">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jjS-HQ-G6F" id="Wlj-EN-eYw">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VMH-zH-MfH"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="iRP-4E-AZP"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FH0-4j-p5h" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.95" id="1gU-tX-CV9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ziU-W6-rhs" secondAttribute="bottom" constant="5" id="4ci-BY-kUO"/>
-                            <constraint firstItem="u5N-hI-NvX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="84" id="8YQ-aB-jcC"/>
+                            <constraint firstItem="eK0-iy-K6S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4oW-jz-wvU"/>
+                            <constraint firstItem="cZS-9A-qK4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9T2-Kg-h2m"/>
                             <constraint firstItem="ziU-W6-rhs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9lJ-1s-UfB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="u5N-hI-NvX" secondAttribute="trailing" id="H4n-0e-jnB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cZS-9A-qK4" secondAttribute="bottom" constant="5" id="B61-Ji-5wb"/>
+                            <constraint firstItem="eK0-iy-K6S" firstAttribute="top" secondItem="FH0-4j-p5h" secondAttribute="bottom" constant="30" id="Fur-Ws-nK1"/>
                             <constraint firstItem="ziU-W6-rhs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="KNH-Vb-Cyz"/>
                             <constraint firstItem="FH0-4j-p5h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="L4y-Ro-gN6"/>
                             <constraint firstItem="ziU-W6-rhs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Qzh-y9-fKy"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u5N-hI-NvX" secondAttribute="bottom" constant="10" id="U8R-k7-3Jv"/>
-                            <constraint firstItem="u5N-hI-NvX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="dCx-Vk-Xh9"/>
                             <constraint firstItem="FH0-4j-p5h" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="gYT-Ms-i71"/>
-                            <constraint firstItem="u5N-hI-NvX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="115" id="nme-a2-eTG"/>
-                            <constraint firstItem="u5N-hI-NvX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tqV-h0-67m"/>
+                            <constraint firstItem="eK0-iy-K6S" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nE2-7a-H2y"/>
                             <constraint firstItem="ziU-W6-rhs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="uOv-Ai-F01"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eK0-iy-K6S" secondAttribute="bottom" constant="50" id="xZ5-94-AD3"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="ziU-W6-rhs"/>
+                                <exclude reference="cZS-9A-qK4"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="KNH-Vb-Cyz"/>
-                                <exclude reference="8YQ-aB-jcC"/>
-                                <exclude reference="dCx-Vk-Xh9"/>
-                                <exclude reference="nme-a2-eTG"/>
-                                <exclude reference="U8R-k7-3Jv"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ziU-W6-rhs" id="Zy2-Cg-mJ9"/>
+                        <outlet property="tableView" destination="eK0-iy-K6S" id="qMf-ML-moH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

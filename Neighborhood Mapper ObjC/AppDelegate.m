@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LocationManager.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+  }
+  
+  [[LocationManager sharedInstance] startUpdatingLocation];
+  
+  [[LocationManager sharedInstance] createPingNotification];
+
   // Override point for customization after application launch.
   return YES;
 }
@@ -46,16 +56,32 @@
   UIApplicationState state = [application applicationState];
   if (state == UIApplicationStateInactive) {
     // Application was in the background when notification was delivered.
+    NSLog(@"user info in handleActionWithIdenfifier is %@", notification.userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"presentPing" object:nil userInfo:notification.userInfo];
+
   } else {
     // App was running in the foreground. Perhaps
     // show a UIAlertView to ask them what they want to do?
+    NSLog(@"user info in handleActionWithIdenfifier is %@", notification.userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"presentPing" object:nil userInfo:notification.userInfo];
+
   }
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
-  if ([identifier isEqualToString:@"pingGo"]) {
-    NSLog(@"user info in handleActionWithIdenfifier is %@", notification.userInfo);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"pingSurvey" object:nil userInfo:notification.userInfo];
+  if ([identifier isEqualToString:@"pingNo"]) {
+    // reschedule notification
+    UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+    localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:300];
+    localNotification.alertBody = @"Answer a question about your current location?";
+    localNotification.alertAction = @"OK";
+    localNotification.category = @"pingSurvey";
+    localNotification.timeZone = [NSTimeZone defaultTimeZone];
+    localNotification.userInfo = notification.userInfo;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+  } else {
+//    NSLog(@"user info in handleActionWithIdenfifier is %@", notification.userInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"presentPing" object:nil userInfo:notification.userInfo];
   }
   if (completionHandler) {
     completionHandler();

@@ -35,6 +35,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+  [self.timeLabel setText:[NSString stringWithFormat:@"Message date: %@", self.dateStamp]];
 }
 
 - (void)didReceiveMemoryWarning {

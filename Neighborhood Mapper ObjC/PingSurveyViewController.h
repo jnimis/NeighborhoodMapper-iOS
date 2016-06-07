@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol PingSurveyControllerDelegate <NSObject>
-
-- (void)dismissPingSurvey;
-
-@end
+#import "ProtocolHeader.h"
 
 @interface PingSurveyViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -22,6 +17,8 @@
 @property (strong, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property int safetyValue;
+@property (strong, nonatomic) NSString* dateStamp;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 
 @property (strong, nonatomic) NSDictionary* userData;
 

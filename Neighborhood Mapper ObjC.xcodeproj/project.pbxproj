@@ -11,6 +11,7 @@
 		2A3CC6AD1CF3A2E000877215 /* LinkedListNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC6AA1CF3A2E000877215 /* LinkedListNode.m */; };
 		2A3CC6B11CF4AF0E00877215 /* ButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A3CC6AF1CF4AF0E00877215 /* ButtonCell.m */; };
 		2A3CC6B21CF4AF0E00877215 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A3CC6B01CF4AF0E00877215 /* ButtonCell.xib */; };
+		2A9812971CF65279005CB91C /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9812961CF65279005CB91C /* arrow.png */; };
 		2AB5ADA11CEFF97400E9BB0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5ADA01CEFF97400E9BB0F /* main.m */; };
 		2AB5ADA41CEFF97400E9BB0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5ADA31CEFF97400E9BB0F /* AppDelegate.m */; };
 		2AB5ADA71CEFF97400E9BB0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5ADA61CEFF97400E9BB0F /* ViewController.m */; };
@@ -23,6 +24,8 @@
 		2AB5ADD61CEFF9E700E9BB0F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB5ADD51CEFF9E700E9BB0F /* CoreLocation.framework */; };
 		2AB5ADDA1CF014BD00E9BB0F /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB5ADD81CF014BD00E9BB0F /* SurveyViewController.m */; };
 		2AB5ADDB1CF014BD00E9BB0F /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB5ADD91CF014BD00E9BB0F /* SurveyViewController.xib */; };
+		2ABFE4841CFA291000B42CD6 /* DebugConsoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE4821CFA291000B42CD6 /* DebugConsoleViewController.m */; };
+		2ABFE4851CFA291000B42CD6 /* DebugConsoleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ABFE4831CFA291000B42CD6 /* DebugConsoleViewController.xib */; };
 		2AEA404A1CF278030059F7DB /* PingSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA40481CF278030059F7DB /* PingSurveyViewController.m */; };
 		2AEA404B1CF278030059F7DB /* PingSurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AEA40491CF278030059F7DB /* PingSurveyViewController.xib */; };
 /* End PBXBuildFile section */
@@ -54,6 +57,8 @@
 		2A3CC6AE1CF4AF0E00877215 /* ButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonCell.h; sourceTree = "<group>"; };
 		2A3CC6AF1CF4AF0E00877215 /* ButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonCell.m; sourceTree = "<group>"; };
 		2A3CC6B01CF4AF0E00877215 /* ButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
+		2A9812961CF65279005CB91C /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		2A9812981CF65E61005CB91C /* ProtocolHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProtocolHeader.h; sourceTree = "<group>"; };
 		2AB5AD9C1CEFF97400E9BB0F /* Neighborhood Mapper ObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neighborhood Mapper ObjC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB5ADA01CEFF97400E9BB0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2AB5ADA21CEFF97400E9BB0F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +81,9 @@
 		2AB5ADD71CF014BD00E9BB0F /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
 		2AB5ADD81CF014BD00E9BB0F /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
 		2AB5ADD91CF014BD00E9BB0F /* SurveyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyViewController.xib; sourceTree = "<group>"; };
+		2ABFE4811CFA291000B42CD6 /* DebugConsoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugConsoleViewController.h; sourceTree = "<group>"; };
+		2ABFE4821CFA291000B42CD6 /* DebugConsoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugConsoleViewController.m; sourceTree = "<group>"; };
+		2ABFE4831CFA291000B42CD6 /* DebugConsoleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DebugConsoleViewController.xib; sourceTree = "<group>"; };
 		2AEA40471CF278030059F7DB /* PingSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingSurveyViewController.h; sourceTree = "<group>"; };
 		2AEA40481CF278030059F7DB /* PingSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingSurveyViewController.m; sourceTree = "<group>"; };
 		2AEA40491CF278030059F7DB /* PingSurveyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PingSurveyViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				2A3CC6A01CF3A0C500877215 /* Constants.h */,
+				2A9812961CF65279005CB91C /* arrow.png */,
 				2AB5ADA21CEFF97400E9BB0F /* AppDelegate.h */,
 				2AB5ADA31CEFF97400E9BB0F /* AppDelegate.m */,
 				2AB5ADD21CEFF9AA00E9BB0F /* LocationManager.h */,
@@ -141,6 +150,7 @@
 				2A3CC6AE1CF4AF0E00877215 /* ButtonCell.h */,
 				2A3CC6AF1CF4AF0E00877215 /* ButtonCell.m */,
 				2A3CC6B01CF4AF0E00877215 /* ButtonCell.xib */,
+				2A9812981CF65E61005CB91C /* ProtocolHeader.h */,
 				2AB5ADD71CF014BD00E9BB0F /* SurveyViewController.h */,
 				2AB5ADD81CF014BD00E9BB0F /* SurveyViewController.m */,
 				2AB5ADD91CF014BD00E9BB0F /* SurveyViewController.xib */,
@@ -148,6 +158,9 @@
 				2AEA40481CF278030059F7DB /* PingSurveyViewController.m */,
 				2AEA40491CF278030059F7DB /* PingSurveyViewController.xib */,
 				2AB5ADA81CEFF97400E9BB0F /* Main.storyboard */,
+				2ABFE4811CFA291000B42CD6 /* DebugConsoleViewController.h */,
+				2ABFE4821CFA291000B42CD6 /* DebugConsoleViewController.m */,
+				2ABFE4831CFA291000B42CD6 /* DebugConsoleViewController.xib */,
 				2AB5ADAB1CEFF97400E9BB0F /* Assets.xcassets */,
 				2AB5ADAD1CEFF97400E9BB0F /* LaunchScreen.storyboard */,
 				2AB5ADB01CEFF97400E9BB0F /* Info.plist */,
@@ -296,12 +309,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABFE4851CFA291000B42CD6 /* DebugConsoleViewController.xib in Resources */,
 				2AB5ADAF1CEFF97400E9BB0F /* LaunchScreen.storyboard in Resources */,
 				2AB5ADAC1CEFF97400E9BB0F /* Assets.xcassets in Resources */,
 				2AEA404B1CF278030059F7DB /* PingSurveyViewController.xib in Resources */,
 				2A3CC6B21CF4AF0E00877215 /* ButtonCell.xib in Resources */,
 				2AB5ADDB1CF014BD00E9BB0F /* SurveyViewController.xib in Resources */,
 				2AB5ADAA1CEFF97400E9BB0F /* Main.storyboard in Resources */,
+				2A9812971CF65279005CB91C /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABFE4841CFA291000B42CD6 /* DebugConsoleViewController.m in Sources */,
 				2AEA404A1CF278030059F7DB /* PingSurveyViewController.m in Sources */,
 				2A3CC6B11CF4AF0E00877215 /* ButtonCell.m in Sources */,
 				2A3CC6AC1CF3A2E000877215 /* LinkedList.m in Sources */,
@@ -481,7 +497,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.campercollective.neighborhoodmapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55fafe5e-17df-48d4-8b6a-6464425da5d9";
 			};
 			name = Debug;
 		};
@@ -495,7 +511,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.campercollective.neighborhoodmapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "18be1aac-2da9-419f-8336-d2db945925f2";
 			};
 			name = Release;
 		};

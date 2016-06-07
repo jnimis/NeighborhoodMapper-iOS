@@ -6,9 +6,6 @@
 //  Copyright © 2016 John Nimis. All rights reserved.
 //
 
-#define pingDelayInMinutes 2
-#define URL @"https://citytravel.ssc.wisc.edu/collectInfoiPhone.php"
-
 #import "LocationManager.h"
 #import <UIKit/UIKit.h>
 @import CoreLocation;
@@ -27,8 +24,8 @@
     LocationManager *instance = sharedInstance;
     instance.locationManager = [CLLocationManager new];
     instance.locationManager.delegate = instance;
-    instance.locationManager.desiredAccuracy = kCLLocationAccuracyBest; // you can use kCLLocationAccuracyHundredMeters to get better battery life
-    instance.locationManager.pausesLocationUpdatesAutomatically = NO; // this is important
+    instance.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    instance.locationManager.pausesLocationUpdatesAutomatically = NO;
   });
   
   return sharedInstance;
@@ -55,12 +52,30 @@
 }
 
 - (BOOL)storeLocationForKey:(NSString*)key {
+  
   if (self.currentLocation == nil) {
     return false;
   } else {
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
     NSData* locationData = [NSKeyedArchiver archivedDataWithRootObject:self.currentLocation];
     [userDefaults setObject:locationData forKey:key];
+    
+    NSString* latitude = [NSString stringWithFormat:@"%lf", self.currentLocation.coordinate.latitude];
+    NSString* longitude = [NSString stringWithFormat:@"%lf", self.currentLocation.coordinate.longitude];
+    NSString *uuid = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    NSString *keySend = key;
+    if ([key length] > 16) {
+      keySend = [key substringToIndex:15];
+    }
+    
+    NSDictionary* toSend = [NSDictionary dictionaryWithObjectsAndKeys:
+                            uuid, @"user_id",
+                            latitude, @"lat",
+                            longitude, @"long",
+                            keySend, @"key",
+                            nil];
+    
+    [self sendData:toSend toURL:specialURL];
     
   }
   return true;
@@ -77,11 +92,6 @@
   
   NSDate *now = [NSDate date];
   NSTimeInterval interval = self.lastTimestamp ? [now timeIntervalSinceDate:self.lastTimestamp] : 0;
-  NSDateFormatter* df = [[NSDateFormatter alloc] init];
-  df.dateFormat = @"MM-dd";
-  self.dateStamp = [df stringFromDate:now];
-  df.dateFormat = @"HH";
-  self.hourStamp = [df stringFromDate:now];
   
   if (!self.lastTimestamp || interval >= pingDelayInMinutes * 60)
   {
@@ -107,6 +117,12 @@
     
     [self sendData:dataToSend toURL:URL];
     
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"MM-dd";
+    self.dateStamp = [df stringFromDate:now];
+    df.dateFormat = @"HH";
+    self.hourStamp = [df stringFromDate:now];
+    
     [self testForPing:NO];
     
     [self addRecentLocation];
@@ -116,9 +132,11 @@
 - (void)addRecentLocation {
   
   NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
-  NSMutableArray* archiveArray = [userDefaults objectForKey:@"recentLocations"];
-  NSMutableArray* recentLocations =[NSMutableArray new];
-  if (archiveArray != nil) {
+  NSArray* storedArray = [userDefaults objectForKey:@"recentLocations"];
+  NSMutableArray* archiveArray = [NSMutableArray new];
+  NSMutableArray* recentLocations = [NSMutableArray new];
+  if (storedArray != nil) {
+    archiveArray = [NSMutableArray arrayWithArray:storedArray];
     for (NSData* encodedLocation in archiveArray) {
       CLLocation *location = [NSKeyedUnarchiver unarchiveObjectWithData:encodedLocation];
       [recentLocations addObject:location];
@@ -129,6 +147,8 @@
   if ([recentLocations count] > MAX_SAVED_LOCS) {
     [recentLocations removeObjectAtIndex:MAX_SAVED_LOCS];
   }
+  
+  archiveArray = [NSMutableArray new];
   
   for (CLLocation *location in recentLocations) {
     NSData *encodedLocation = [NSKeyedArchiver archivedDataWithRootObject:location];
@@ -155,16 +175,39 @@
   NSURLSession* session = [NSURLSession sharedSession];
   NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data,
                                                                                             NSURLResponse *response,
-                                                                                            NSError *error){
+                                                                                            NSError *error) {
+    
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+//    NSString* responseString = [response description];
     NSLog(@"Data dictionary: %@", responseDictionary);
+//    NSLog(@"String version of response: %@", responseString);
     //      NSLog(@"NSURLResponse: %@", response);
+    NSString* result = [responseDictionary objectForKey:@"result"];
+    if ( [result isEqualToString:@"success"]) {
+      if ([url containsString:@"initial"]) {
+      [[NSUserDefaults standardUserDefaults] setValue:@"yes!" forKey:surveyKey];
+
+      }
+
+    } else {
+      
+      if (![url isEqualToString:URL]) {
+        
+        // reschedule - is not standard (survey or pingsurvey result)
+        dispatch_after(120, dispatch_get_main_queue(), ^{
+          [self sendData:dataToSend toURL:url];
+        });
+      }
+
+    }
   }];
+  
   [dataTask resume];
 
 }
 
 - (void)testForPing:(BOOL)test {
+  
   bool shouldPing = YES;
   
   NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -172,12 +215,12 @@
   NSArray* keys = @[
     @"My home",
     @"My grocery store",
-    @"My gym or \rfitness studio",
+    @"My gym or fitness studio",
     @"Favorite coffee shop",
     @"Favorite store",
-    @"Best local \rwine/beer/alcohol",
+    @"Best local wine/beer/alcohol",
     @"Favorite restaurant",
-    @"Most relaxing spot \rin my neighborhood"
+    @"Most relaxing spot in my neighborhood"
     ];
   
   NSMutableArray* savedLocations = [NSMutableArray array];
@@ -187,10 +230,12 @@
       [savedLocations addObject:[NSKeyedUnarchiver unarchiveObjectWithData:encodedSavedLocation]];
     }
   }
-//  NSArray* savedLocations = [userDefaults objectForKey:@"savedLocations"];
+
   if ([savedLocations count] > 0) {
     for (CLLocation* location in savedLocations) {
-      if ([location distanceFromLocation:self.currentLocation] < 50) {
+      float x = [location distanceFromLocation:self.currentLocation];
+//      NSLog(@"distance to location is %f", x);
+      if (x < 50) {
         shouldPing = NO;
       }
     }
@@ -206,42 +251,55 @@
     }
   }
   
-  int stationaryPings = (int) STATIONARY_TIME_MINUTES / (PING_TIME_SECONDS / 60);
-  int movingPings = (int) MOVING_TIME_MINUTES / (PING_TIME_SECONDS / 60);
+  int stationaryPings = (int) STATIONARY_TIME_MINUTES / pingDelayInMinutes;
+//  int movingPings = (int) MOVING_TIME_MINUTES / pingDelayInMinutes;
   
-  if (shouldPing && [recentLocations count] == MAX_SAVED_LOCS) {
+  if (shouldPing && [recentLocations count] >= MAX_SAVED_LOCS) {
+    self.currentLocation = recentLocations[0];
     for (int i = 0; i < stationaryPings; i++) {
       if ([self.currentLocation distanceFromLocation:recentLocations[i]] > 17) {
         shouldPing = false;
       }
     }
     
-    for (int i = stationaryPings; i < (stationaryPings + movingPings); i++) {
-      if ([self.currentLocation distanceFromLocation:recentLocations[i]] < 17) {
-        shouldPing = false;
-      }
-    }
+//    for (int i = stationaryPings; i < (stationaryPings + movingPings); i++) {
+//      if ([self.currentLocation distanceFromLocation:recentLocations[i]] < 17) {
+//        shouldPing = false;
+//      }
+//    }
   } else {
     shouldPing = false;
   }
   
-  NSString* lastPingToday = [userDefaults objectForKey:self.dateStamp];
-  int lastPingHour = (int) [lastPingToday integerValue];
   int currentHour = (int) [self.hourStamp integerValue];
-  if ((currentHour - lastPingHour > 1) && currentHour > 7 && currentHour < 9) {
+  if (currentHour <= 7 || currentHour >= 21) {
+    shouldPing = false;
+  } else {
+    NSString* lastPingToday = [userDefaults objectForKey:self.dateStamp];
     if (lastPingToday != nil) {
-      if (lastPingHour < 12 && currentHour < 12) {
+      int lastPingHour = (int) [lastPingToday integerValue];
+      if (currentHour - lastPingHour <= 1) {
         shouldPing = false;
-      } else if (lastPingHour < 17 && currentHour < 17) {
-        shouldPing = false;
-      } else if (lastPingHour < 21) {
-        shouldPing = false;
+      } else {
+        if (lastPingHour >= 17) {
+          shouldPing = false;
+        } else if (lastPingHour >= 12 && currentHour < 17) {
+          shouldPing = false;
+        } else if (currentHour < 12) {
+          shouldPing = false;
+        }
       }
     }
-  } else {
-    shouldPing = false;
   }
 
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"HH.mm"];
+  NSString *strCurrentTime = [dateFormatter stringFromDate:[NSDate date]];
+  
+  if ([strCurrentTime floatValue] >= 21.00 || [strCurrentTime floatValue]  <= 8.00){
+    shouldPing = false;
+  }
+  
   if (test) {
     shouldPing = true;
   }
@@ -256,18 +314,19 @@
     NSString* hourString = [df stringFromDate:date];
     [userDefaults setObject:hourString forKey:dateString];
     
-    if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+    if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive || test) {
       // app is inactive: send notification to system
       UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-      localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+      localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
       localNotification.alertBody = @"Answer a question about your current location?";
       localNotification.alertAction = @"OK";
+      [localNotification setSoundName:UILocalNotificationDefaultSoundName];
       localNotification.category = @"pingSurvey";
       localNotification.timeZone = [NSTimeZone defaultTimeZone];
       localNotification.userInfo = self.userData;
       [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
     } else {
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"pingSurvey" object:nil userInfo:self.userData];
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"presentPing" object:nil userInfo:self.userData];
     }
     
   }
@@ -312,12 +371,12 @@
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
   
   if ([identifier isEqualToString:@"PingGo"]) {
+    //
     
-    NSLog(@"You chose action 1.");
   }
   else if ([identifier isEqualToString:@"PingNo"]) {
+    // reschedule ping question later
     
-    NSLog(@"You chose action 2.");
   }
   if (completionHandler) {
     

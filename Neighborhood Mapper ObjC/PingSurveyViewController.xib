@@ -11,6 +11,7 @@
                 <outlet property="picker" destination="vE1-pc-JwP" id="Z2W-1v-kl0"/>
                 <outlet property="slider" destination="pEG-r4-AXb" id="XWc-Zt-cRr"/>
                 <outlet property="submitButton" destination="AgD-Dv-NV7" id="dJn-MB-P1a"/>
+                <outlet property="timeLabel" destination="fb2-hX-rJ9" id="XMv-nM-o7e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,33 +20,33 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vE1-pc-JwP">
-                    <rect key="frame" x="140" y="61" width="320" height="216"/>
+                <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vE1-pc-JwP">
+                    <rect key="frame" x="140" y="56" width="320" height="216"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="04g-j0-9Au"/>
                         <outlet property="delegate" destination="-1" id="vui-dm-r1Q"/>
                     </connections>
                 </pickerView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which best describes your current activity? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkF-EV-xG7">
-                    <rect key="frame" x="10" y="10" width="336" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Which best describes your current activity? " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkF-EV-xG7">
+                    <rect key="frame" x="8" y="46" width="336" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="pEG-r4-AXb">
-                    <rect key="frame" x="8" y="338" width="544" height="31"/>
+                <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="pEG-r4-AXb">
+                    <rect key="frame" x="8" y="333" width="544" height="31"/>
                     <connections>
                         <action selector="sliderChanged:" destination="-1" eventType="valueChanged" id="f5B-08-wVi"/>
                     </connections>
                 </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not at all safe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLA-Gd-vuD">
-                    <rect key="frame" x="10" y="388" width="105" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Not at all safe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLA-Gd-vuD">
+                    <rect key="frame" x="10" y="383" width="105" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extremely safe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-OS-8Ry">
-                    <rect key="frame" x="437" y="388" width="113" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Extremely safe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-OS-8Ry">
+                    <rect key="frame" x="437" y="383" width="113" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -57,8 +58,14 @@
                         <action selector="submitButtonTapped:" destination="-1" eventType="touchUpInside" id="vKl-vM-qNc"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How safe do you feel?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC5-Db-Cdg">
-                    <rect key="frame" x="10" y="297" width="168" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="How safe do you feel?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC5-Db-Cdg">
+                    <rect key="frame" x="10" y="292" width="168" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="PingTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-hX-rJ9">
+                    <rect key="frame" x="43" y="22" width="72" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -67,7 +74,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="RC5-Db-Cdg" firstAttribute="top" secondItem="vE1-pc-JwP" secondAttribute="bottom" constant="20" id="0nW-BW-W85"/>
-                <constraint firstItem="pkF-EV-xG7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="12K-5t-DPi"/>
+                <constraint firstItem="pkF-EV-xG7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="12K-5t-DPi"/>
+                <constraint firstItem="fb2-hX-rJ9" firstAttribute="leading" secondItem="pkF-EV-xG7" secondAttribute="leading" id="24Y-YL-Arb"/>
                 <constraint firstItem="AgD-Dv-NV7" firstAttribute="top" secondItem="SLA-Gd-vuD" secondAttribute="bottom" constant="20" id="7yH-Sh-W38"/>
                 <constraint firstItem="pkF-EV-xG7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="DqU-bi-eGE"/>
                 <constraint firstItem="pEG-r4-AXb" firstAttribute="leading" secondItem="RC5-Db-Cdg" secondAttribute="leading" id="KTJ-Eg-7CM"/>
@@ -76,16 +84,20 @@
                 <constraint firstItem="Xba-OS-8Ry" firstAttribute="trailing" secondItem="pEG-r4-AXb" secondAttribute="trailing" id="UMr-GX-NeE"/>
                 <constraint firstItem="pEG-r4-AXb" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.9" id="VO8-pm-O8C"/>
                 <constraint firstItem="RC5-Db-Cdg" firstAttribute="leading" secondItem="pkF-EV-xG7" secondAttribute="leading" id="XWj-NV-e8u"/>
+                <constraint firstItem="pkF-EV-xG7" firstAttribute="top" secondItem="fb2-hX-rJ9" secondAttribute="bottom" constant="10" id="XdJ-aZ-tRq"/>
                 <constraint firstItem="pkF-EV-xG7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cMv-qn-yZh"/>
                 <constraint firstItem="Xba-OS-8Ry" firstAttribute="centerY" secondItem="SLA-Gd-vuD" secondAttribute="centerY" id="d16-Wd-zG4"/>
-                <constraint firstItem="vE1-pc-JwP" firstAttribute="top" secondItem="pkF-EV-xG7" secondAttribute="bottom" constant="30" id="dQR-wX-ox3"/>
+                <constraint firstItem="vE1-pc-JwP" firstAttribute="top" secondItem="pkF-EV-xG7" secondAttribute="bottom" id="dQR-wX-ox3"/>
+                <constraint firstItem="fb2-hX-rJ9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="g8S-tF-wX3"/>
                 <constraint firstItem="SLA-Gd-vuD" firstAttribute="top" secondItem="pEG-r4-AXb" secondAttribute="bottom" constant="20" id="rHc-TR-g2R"/>
                 <constraint firstItem="SLA-Gd-vuD" firstAttribute="leading" secondItem="pEG-r4-AXb" secondAttribute="leading" id="v4F-Ql-epE"/>
                 <constraint firstItem="pEG-r4-AXb" firstAttribute="top" secondItem="RC5-Db-Cdg" secondAttribute="bottom" constant="20" id="vZf-pS-Jis"/>
+                <constraint firstItem="pkF-EV-xG7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="wJR-IX-bO0"/>
                 <constraint firstItem="AgD-Dv-NV7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xRg-T1-rKr"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="12K-5t-DPi"/>
                     <exclude reference="cMv-qn-yZh"/>
                     <exclude reference="Rct-ZM-Pkf"/>
                 </mask>
